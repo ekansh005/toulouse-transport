@@ -23,4 +23,24 @@ const callPlaces = (options) => {
   });
 };
 
-module.exports = {callPlaces};
+const callStopAreas = () => {
+  return new Promise((resolve, reject) => {
+    request({
+      baseUrl,
+      url: `/stop_areas.json?key=${apiKey}`,
+    }, (error, response, body) => {
+      if (error) {
+        return reject(error);
+      }
+      if (response.statusCode !== 200) {
+        return reject(new Error(response.statusCode));
+      }
+      resolve(JSON.parse(body).stopAreas.stopArea);
+    });
+  });
+};
+
+module.exports = {
+  callPlaces,
+  callStopAreas,
+};

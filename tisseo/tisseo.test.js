@@ -36,3 +36,15 @@ describe('Tisseo callPlaces', () => {
     done();
   });
 });
+
+describe('Tisseo callStopAreas', () => {
+  it('should return ALL stop areas', (done) => {
+    tisseo.callStopAreas().then((results) => {
+      expect(Array.isArray(results)).toBeTruthy();
+      expect(results.length).toBeGreaterThan(1000);
+      done();
+    }).catch((e) => {
+      done(e);
+    });
+  }).timeout(3000);
+});
