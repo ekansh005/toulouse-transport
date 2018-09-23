@@ -1,4 +1,4 @@
-require('./../../config/config');
+require('./config');
 const expect = require('expect');
 
 describe('Enviornment Variable Configs', () => {

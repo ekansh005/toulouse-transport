@@ -11,7 +11,7 @@ const port = process.env.PORT;
 app.use(bodyParser.json());
 
 app.get('/places/:searchString', (req, res) => {
-  places.bySearch(req.params.searchString).then((result) => {
+  places.search(req.params.searchString).then((result) => {
     res.send(result);
   }).catch((e) => {
     res.status(400).send(e);

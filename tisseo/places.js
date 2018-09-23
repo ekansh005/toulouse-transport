@@ -2,9 +2,9 @@ const _ = require('lodash');
 
 const tisseo = require('./tisseo');
 
-const bySearch = (searchString) => {
+const search = (input) => {
   return new Promise(function(resolve, reject) {
-    tisseo.callPlaces(searchString).then((places) => {
+    tisseo.callPlaces(input).then((places) => {
       let grouped = _.groupBy(places, 'className') || {};
       grouped.top5 = _.take(places, 5);
       // grouped.raw = places;
@@ -15,4 +15,4 @@ const bySearch = (searchString) => {
   });
 };
 
-module.exports = {bySearch};
+module.exports = {search};
