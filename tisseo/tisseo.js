@@ -12,8 +12,8 @@ const getUrlParamsForPlaces = (options) => {
   options.toString() === '[object Object]') {
     param = {
       term: options.searchString || null,
-      coordinatesXY: options.latitude && options.longitude ?
-      `${options.latitude},${options.longitude}` : null,
+      coordinatesXY: options.lat && options.long ?
+      `${options.lat},${options.long}` : null,
       maxDistance: options.maxDistance || null,
       srid: options.srid || null,
       bbox: options.bbox || null,
@@ -48,7 +48,10 @@ const callPlaces = (options) => {
       url: `/places.json?${sParams}key=${apiKey}`,
     }, (error, response, body) => {
       if (error) {
-        reject(error);
+        return reject(error);
+      }
+      if (response.statusCode !== 200) {
+        return reject(new Error(response.statusCode));
       }
       resolve(JSON.parse(body));
     });
