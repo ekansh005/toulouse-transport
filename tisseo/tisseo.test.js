@@ -29,9 +29,8 @@ describe('Tisseo callPlaces', () => {
 
   it('should return 500 when called with searchString & lat/long', (done) => {
     expect(tisseo.callPlaces({
-      searchString,
-      lat: 1.1,
-      long: 1.2,
+      term: searchString,
+      coordinatesXY: '1.1,1.2',
     })).rejects.toThrow('500');
     done();
   });

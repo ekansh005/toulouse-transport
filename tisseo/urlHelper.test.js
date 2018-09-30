@@ -15,8 +15,8 @@ describe('UrlHelper getUrlParamsForPlaces', () => {
   it('should return a string of URL parameters for Object argument', (done) => {
     const expString = `term=${searchString}&number=5&simple=1&`;
     const reqObj = {
-      searchString,
-      maxResults: 5,
+      term: searchString,
+      number: 5,
     };
     expect(typeof urlHelper.getUrlParamsForPlaces(reqObj)).toBe('string');
     expect(urlHelper.getUrlParamsForPlaces(reqObj)).toBe(expString);

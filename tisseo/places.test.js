@@ -54,8 +54,8 @@ describe('Places search', () => {
 
   it('should have only stop & top5', (done) => {
     places.search({
-      searchString: 'casselardit',
-      stopAreas: true,
+      term: 'casselardit',
+      displayOnlyStopAreas: 1,
     }).then((result) => {
       expect(result).toEqual({
         stop: expect.any(Array),
