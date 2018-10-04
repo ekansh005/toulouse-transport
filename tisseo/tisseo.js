@@ -40,7 +40,26 @@ const callStopAreas = () => {
   });
 };
 
+const callStopPoints = (options) => {
+  return new Promise((resolve, reject) => {
+    const sParams = urlHelper.getUrlParamsForStopPoints(options);
+    request({
+      baseUrl,
+      url: `/stop_points.json?${sParams}key=${apiKey}`,
+    }, (error, response, body) => {
+      if (error) {
+        return reject(error);
+      }
+      if (response.statusCode !== 200) {
+        return reject(new Error(response.statusCode));
+      }
+      resolve(JSON.parse(body).physicalStops.physicalStop);
+    });
+  });
+};
+
 module.exports = {
   callPlaces,
   callStopAreas,
+  callStopPoints,
 };

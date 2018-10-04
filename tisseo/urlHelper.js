@@ -43,7 +43,25 @@ const getUrlParamsForStopAreas = (options) => {
   return getUrlParamString(param);
 };
 
+const getUrlParamsForStopPoints = (options) => {
+  let param = {};
+  if (typeof options === 'string') {
+
+  } else if (typeof options === 'object' &&
+  options.toString() === '[object Object]') {
+    for (let key in options) {
+      if (options.hasOwnProperty(key) && options[key]) {
+        param[key] = options[key];
+      }
+    }
+  } else {
+    throw new Error('InvalidType');
+  }
+  return getUrlParamString(param);
+};
+
 module.exports = {
   getUrlParamsForPlaces,
   getUrlParamsForStopAreas,
+  getUrlParamsForStopPoints,
 };
