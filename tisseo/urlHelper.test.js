@@ -159,3 +159,39 @@ describe('UrlHelper getUrlParamsForStopPoints', () => {
     done();
   });
 });
+
+describe('UrlHelper getUrlParamsForLines', () => {
+  it('should return a string of URL parameters for STRING argument', (done) => {
+    const expString = `shortName=T2&`;
+    expect(typeof urlHelper.getUrlParamsForLines('T2')).toBe('string');
+    expect(urlHelper.getUrlParamsForLines('T2')).toBe(expString);
+    done();
+  });
+
+  it('should return a string of URL parameters for Object argument', (done) => {
+    const expString = `lineId=${testData.lines.T2}&displayTerminus=1&`;
+    const reqObj = {
+      lineId: testData.lines.T2,
+      displayTerminus: 1,
+    };
+    expect(typeof urlHelper.getUrlParamsForLines(reqObj)).toBe('string');
+    expect(urlHelper.getUrlParamsForLines(reqObj)).toBe(expString);
+    done();
+  });
+
+  it('should return an empty string if no input is passed', (done) => {
+    expect(urlHelper.getUrlParamsForLines()).toBe('');
+    done();
+  });
+
+  it('should throw error for Invalid argument', (done) => {
+    /**
+    * this function is to wrap the function call to test exception
+    */
+    function callFn() {
+      urlHelper.getUrlParamsForLines(5);
+    }
+    expect(callFn).toThrow();
+    done();
+  });
+});

@@ -77,3 +77,38 @@ describe('Tisseo callNetworks', () => {
     });
   });
 });
+
+describe('Tisseo callLines', () => {
+  it('should return records when passed with STRING parameter', (done) => {
+    tisseo.callLines('T2').then((results) => {
+      expect(Array.isArray(results)).toBeTruthy();
+      expect(results.length).toBe(1);
+      done();
+    }).catch((e) => {
+      done(e);
+    });
+  });
+
+  it('should return records when passed with Object parameter', (done) => {
+    tisseo.callLines({
+      lineId: testData.lines.T2,
+      displayTerminus: 1,
+    }).then((results) => {
+      expect(Array.isArray(results)).toBeTruthy();
+      expect(results.length).toBe(1);
+      done();
+    }).catch((e) => {
+      done(e);
+    });
+  });
+
+  it('should return records when called without parameters', (done) => {
+    tisseo.callLines().then((results) => {
+      expect(Array.isArray(results)).toBeTruthy();
+      expect(results.length).toBeGreaterThan(1);
+      done();
+    }).catch((e) => {
+      done(e);
+    });
+  });
+});

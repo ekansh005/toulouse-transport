@@ -34,6 +34,8 @@ const _parseInputParameter = (iParam, allowedTypes, defaultKeyForString) => {
         oParam[key] = iParam[key];
       }
     }
+  } else if (typeof iParam === 'undefined') {
+    return oParam;
   } else {
     throw new Error('InvalidType');
   }
@@ -46,6 +48,8 @@ const getUrlParamsForPlaces = (options) => {
   return _getUrlParamString(param);
 };
 
+// FIXME: single function for all these
+
 const getUrlParamsForStopAreas = (options) => {
   let param = _parseInputParameter(options, ['object']);
   return _getUrlParamString(param);
@@ -56,10 +60,20 @@ const getUrlParamsForStopPoints = (options) => {
   return _getUrlParamString(param);
 };
 
+const getUrlParamsForLines = (options) => {
+  let param = _parseInputParameter(options, [
+    'undefined',
+    'string',
+    'object',
+  ], 'shortName');
+  return _getUrlParamString(param);
+};
+
 module.exports = {
   _getUrlParamString,
   _parseInputParameter,
   getUrlParamsForPlaces,
   getUrlParamsForStopAreas,
   getUrlParamsForStopPoints,
+  getUrlParamsForLines,
 };
