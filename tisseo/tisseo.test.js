@@ -65,3 +65,15 @@ describe('Tisseo callStopPoints', () => {
     });
   });
 });
+
+describe('Tisseo callNetworks', () => {
+  it('should return records', (done) => {
+    tisseo.callNetworks().then((results) => {
+      expect(Array.isArray(results)).toBeTruthy();
+      expect(results.length).toBe(1);
+      done();
+    }).catch((e) => {
+      done(e);
+    });
+  });
+});

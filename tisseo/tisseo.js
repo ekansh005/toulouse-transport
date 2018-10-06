@@ -58,8 +58,26 @@ const callStopPoints = (options) => {
   });
 };
 
+const callNetworks = () => {
+  return new Promise((resolve, reject) => {
+    request({
+      baseUrl,
+      url: `/networks.json?key=${apiKey}`,
+    }, (error, response, body) => {
+      if (error) {
+        return reject(error);
+      }
+      if (response.statusCode !== 200) {
+        return reject(new Error(response.statusCode));
+      }
+      resolve(JSON.parse(body).networks);
+    });
+  });
+};
+
 module.exports = {
   callPlaces,
   callStopAreas,
   callStopPoints,
+  callNetworks,
 };
