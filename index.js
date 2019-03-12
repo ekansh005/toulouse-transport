@@ -4,6 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const places = require('./tisseo/places');
+const stopAreas = require('./tisseo/stopAreas');
 
 const app = express();
 const port = process.env.PORT;
@@ -11,8 +12,16 @@ const port = process.env.PORT;
 app.use(bodyParser.json());
 
 app.get('/places/:searchString', (req, res) => {
-  places.bySearch(req.params.searchString).then((result) => {
+  places.search(req.params.searchString).then((result) => {
     res.send(result);
+  }).catch((e) => {
+    res.status(400).send(e);
+  });
+});
+
+app.get('/stopAreas', (req, res) => {
+  stopAreas.getAll().then((results) => {
+    res.send(results);
   }).catch((e) => {
     res.status(400).send(e);
   });

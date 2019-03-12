@@ -1,8 +1,8 @@
 const tisseo = require('./tisseo');
 
-const get = () => {
+const all = () => {
   return new Promise((resolve, reject) => {
-    tisseo.callNetworks().then((results) => {
+    tisseo.callStopAreas().then((results) => {
       resolve(results);
     }).catch((e) => {
       reject(e);
@@ -11,5 +11,5 @@ const get = () => {
 };
 
 module.exports = {
-  get,
+  all,
 };

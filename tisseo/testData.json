@@ -1,0 +1,28 @@
+{
+  "stopAreas": {
+    "casselardit": "1970324837186008"
+  },
+  "stopPoints": {
+    "casselardit": "3377699722770349"
+  },
+  "places": {
+    "searchString": "cass",
+    "casselardit": "casselardit"
+  },
+  "lines": {
+    "45": "11821949024910297",
+    "T2": "11821953316814856",
+    "A": "11821949021891694"
+  },
+  "networks": {
+    "tisseo": "6192449487677451"
+  },
+  "operators": {
+    "tisseo": "60030"
+  },
+  "transportMode": {
+    "tramway": "13792273858822588",
+    "metro": "13792273858822586",
+    "bus": "13792273858822585"
+  }
+}

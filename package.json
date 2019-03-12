@@ -6,23 +6,25 @@
   "scripts": {
     "start": "node index.js",
     "start-watch": "nodemon --exec \"npm start\"",
-    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha ./**/*.test.js",
-    "test-watch": "nodemon --exec \"npm test\""
+    "test": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha ./*/*.test.js *.test.js",
+    "test-watch": "nodemon --exec \"npm test\"",
+    "test-debug": "export NODE_ENV=test || SET \"NODE_ENV=test\" && mocha --inspect-brk ./*/*.test.js *.test.js"
   },
   "author": "Ekansh Saxena",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.3",
+    "express": "^4.16.4",
     "lodash": "^4.17.11",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "rewire": "^4.0.1"
   },
   "devDependencies": {
-    "eslint": "^5.6.0",
+    "eslint": "^5.15.1",
     "eslint-config-google": "^0.10.0",
-    "expect": "^23.6.0",
+    "expect": "^24.4.0",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.4",
-    "supertest": "^3.3.0"
+    "nodemon": "^1.18.10",
+    "supertest": "^3.4.2"
   }
 }
